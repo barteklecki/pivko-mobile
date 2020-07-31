@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createAppContainer } from 'react-navigation';
+import { Ionicons } from '@expo/vector-icons';
 
 import CatalogueScreen from '../screens/CatalogueScreen';
 import DetailsScreen from '../screens/DetailsScreen';
@@ -29,12 +30,21 @@ const FavsNavigator = createStackNavigator({
 const MainNavigator = createBottomTabNavigator({
     Start: {
         screen: StartScreen,
+        navigationOptions: {
+            tabBarIcon: tab => <Ionicons name="ios-home" size={24} />,
+        },
     },
     Catalogue: {
         screen: CatalogueNavigator,
+        navigationOptions: {
+            tabBarIcon: tab => <Ionicons name="ios-list" size={24} />,
+        },
     },
     Favourites: {
         screen: FavsNavigator,
+        navigationOptions: {
+            tabBarIcon: tab => <Ionicons name="md-heart" size={24} />,
+        },
     },
 });
 
