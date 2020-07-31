@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-const CatalogueScreen = props => {
+const CatalogueScreen = ({ navigation }) => {
     return (
         <View style={styles.root}>
             <Text>[ Catalogue ]</Text>
             <Button
                 title="Details"
                 onPress={() => {
-                    props.navigation.navigate('Details');
+                    navigation.navigate('Details');
                 }}
             />
         </View>

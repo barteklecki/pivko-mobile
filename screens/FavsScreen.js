@@ -1,15 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-const FavsScreen = props => {
-    console.log(props);
+const FavsScreen = ({ navigation }) => {
     return (
         <View style={styles.root}>
             <Text>[ Favs ]</Text>
             <Button
                 title="Details"
                 onPress={() => {
-                    props.navigation.navigate('Details');
+                    navigation.navigate('Details');
                 }}
             />
         </View>
