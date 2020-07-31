@@ -1,9 +1,7 @@
 import React from 'react';
-import {
-    createStackNavigator,
-    createBottomTabNavigator,
-    createAppContainer,
-} from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createAppContainer } from 'react-navigation';
 
 import CatalogueScreen from '../screens/CatalogueScreen';
 import CreditsScreen from '../screens/CreditsScreen';
@@ -22,7 +20,7 @@ const CatalogueNavigator = createStackNavigator({
 
 const FavsNavigator = createStackNavigator({
     Favourites: {
-        screen: CatalogueScreen,
+        screen: FavsScreen,
     },
     Details: {
         screen: DetailsScreen,
@@ -30,6 +28,9 @@ const FavsNavigator = createStackNavigator({
 });
 
 const MainNavigator = createBottomTabNavigator({
+    Start: {
+        screen: StartScreen,
+    },
     Catalogue: {
         screen: CatalogueNavigator,
     },
