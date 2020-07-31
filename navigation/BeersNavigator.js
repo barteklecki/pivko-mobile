@@ -11,12 +11,30 @@ import DetailsScreen from '../screens/DetailsScreen';
 import FavsScreen from '../screens/FavsScreen';
 import StartScreen from '../screens/StartScreen';
 
-const MainNavigator = createBottomTabNavigator({
+const CatalogueNavigator = createStackNavigator({
     Catalogue: {
         screen: CatalogueScreen,
     },
-    Favourites: {
+    Details: {
         screen: DetailsScreen,
+    },
+});
+
+const FavsNavigator = createStackNavigator({
+    Favourites: {
+        screen: CatalogueScreen,
+    },
+    Details: {
+        screen: DetailsScreen,
+    },
+});
+
+const MainNavigator = createBottomTabNavigator({
+    Catalogue: {
+        screen: CatalogueNavigator,
+    },
+    Favourites: {
+        screen: FavsNavigator,
     },
 });
 
