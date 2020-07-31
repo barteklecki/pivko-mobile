@@ -1,10 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-const FavsScreen = () => {
+const FavsScreen = props => {
+    console.log(props);
     return (
         <View style={styles.root}>
             <Text>[ Favs ]</Text>
+            <Button
+                title="Details"
+                onPress={() => {
+                    props.navigation.navigate('Details');
+                }}
+            />
         </View>
     );
 };

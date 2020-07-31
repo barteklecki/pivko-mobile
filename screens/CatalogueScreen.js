@@ -1,10 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-const CatalogueScreen = () => {
+const CatalogueScreen = props => {
     return (
         <View style={styles.root}>
             <Text>[ Catalogue ]</Text>
+            <Button
+                title="Details"
+                onPress={() => {
+                    props.navigation.navigate('Details');
+                }}
+            />
         </View>
     );
 };
