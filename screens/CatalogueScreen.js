@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import { StyleSheet, View, Button, FlatList } from 'react-native';
 
 import ApiData from '../models/beers';
+import BeerListItem from '../components/BeerListItem';
 
 const CatalogueScreen = ({ navigation }) => {
     return (
@@ -9,11 +10,12 @@ const CatalogueScreen = ({ navigation }) => {
             <FlatList
                 data={ApiData}
                 renderItem={({ item }) => (
-                    <View style={styles.item}>
-                        <Text>
-                            {item.id}: {item.name}
-                        </Text>
-                    </View>
+                    <BeerListItem
+                        name={item.name}
+                        tagline={item.tagline}
+                        date={item.first_brewed}
+                        img={item.image_url}
+                    />
                 )}
                 contentContainerStyle={styles.list}
                 ListFooterComponent={() => <Button title="Load more..." />}
@@ -33,13 +35,6 @@ const styles = StyleSheet.create({
     list: {
         flexGrow: 1,
         width: '100%',
-    },
-    item: {
-        width: '100%',
-        borderWidth: 2,
-        borderColor: 'black',
-        marginVertical: 10,
-        padding: 10,
     },
     moreButton: {
         margin: 20,
