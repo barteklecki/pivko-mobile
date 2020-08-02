@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 
 import { beersPerPage } from '../data/consts';
@@ -34,12 +34,21 @@ const CatalogueScreen = ({ navigation }) => {
                 keyExtractor={item => item.id.toString()}
                 data={beerList}
                 renderItem={({ item }) => (
-                    <BeerListItem
-                        name={item.name}
-                        tagline={item.tagline}
-                        date={item.first_brewed}
-                        img={item.image_url}
-                    />
+                    <TouchableOpacity
+                        onPress={() => {
+                            navigation.navigate({
+                                routeName: 'Details',
+                                params: { beer: item },
+                            });
+                        }}
+                    >
+                        <BeerListItem
+                            name={item.name}
+                            tagline={item.tagline}
+                            date={item.first_brewed}
+                            img={item.image_url}
+                        />
+                    </TouchableOpacity>
                 )}
                 contentContainerStyle={styles.list}
                 ListFooterComponentStyle={styles.moreButton}

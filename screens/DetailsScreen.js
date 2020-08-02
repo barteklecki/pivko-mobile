@@ -1,10 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Img, ScrollView } from 'react-native';
 
-const DetailsScreen = () => {
+const DetailsScreen = ({ navigation }) => {
+    const beer = navigation.getParam('beer');
+    console.log(beer);
+
     return (
         <View style={styles.root}>
-            <Text>[ Details ]</Text>
+            <ScrollView>
+                <Text>{beer.name}</Text>
+            </ScrollView>
         </View>
     );
 };
