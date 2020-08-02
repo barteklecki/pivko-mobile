@@ -8,21 +8,32 @@ import BeerListItem from '../components/BeerListItem';
 const CatalogueScreen = ({ navigation }) => {
     const [beerList, setBeerList] = useState([]);
     const [page, setPage] = useState(1);
+    const [isFetching, setIsFetching] = useState(false);
 
     useEffect(() => {
         if (!beerList.length && page === 1) {
             getMeSomeBeers();
         }
-        setPage(page + 1);
     }, []);
 
     const getMeSomeBeers = async () => {
+        setIsFetching(true);
         const URL = `https://api.punkapi.com/v2/beers?page=${page}&per_page=${beersPerPage}`;
         const { data } = await axios(URL);
-        console.log('page=', page, ' length=', beerList.length);
+
         if (data.length) {
             setBeerList([...beerList, ...data]);
+            setPage(page + 1);
         }
+        console.log(
+            'page=',
+            page,
+            ' length=',
+            beerList.length,
+            '/',
+            data.length
+        );
+        setIsFetching(false);
     };
 
     return (
@@ -41,8 +52,9 @@ const CatalogueScreen = ({ navigation }) => {
                 contentContainerStyle={styles.list}
                 ListFooterComponentStyle={styles.moreButton}
                 onEndReached={() => {
-                    getMeSomeBeers();
-                    setPage(page + 1);
+                    if (!isFetching) {
+                        getMeSomeBeers();
+                    }
                 }}
             />
         </View>
