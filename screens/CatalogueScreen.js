@@ -25,14 +25,6 @@ const CatalogueScreen = ({ navigation }) => {
             setBeerList([...beerList, ...data]);
             setPage(page + 1);
         }
-        console.log(
-            'page=',
-            page,
-            ' length=',
-            beerList.length,
-            '/',
-            data.length
-        );
         setIsFetching(false);
     };
 

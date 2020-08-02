@@ -11,7 +11,9 @@ const BeerListItem = ({ name, tagline, date, img }) => {
             </View>
             <Image
                 style={styles.img}
-                source={{ uri: img }}
+                source={
+                    img ? { uri: img } : require('../assets/no-pic-beer.png')
+                }
                 resizeMode="contain"
             />
         </View>
